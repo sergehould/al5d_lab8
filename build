@@ -1,0 +1,12 @@
+#!/bin/bash
+
+OUT_FILE=exec
+rm $OUT_FILE
+echo "Compiling $OUT_FILE"
+gcc -pthread -lncurses al5d.c can.c task_ctl.c task_rx.c ../lib.c -lm -o $OUT_FILE
+if [ $? == 1 ]; then
+ exit 2
+fi
+
+echo "Running $OUT_FILE"
+./$OUT_FILE
